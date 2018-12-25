@@ -33,3 +33,10 @@
 /Copy/
 /FileWriter/
 /FileReader/
+/OutputStreamWriter/
+/InputSteamReader/
+/BufferedOutputStream/
+/BufferedInputStream/
+/BufferedWriter/
+/BufferedReader/
+/流的操作规律.txt
