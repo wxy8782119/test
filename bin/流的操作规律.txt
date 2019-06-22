@@ -1,0 +1,99 @@
+﻿IO流中对象很多，解决问题(处理设备上的数据时)到底该用哪个对象呢？　　
+把IO流进行了规律的总结(四个明确)：
+	明确一：要操作的数据是数据源还是数据目的。
+		源：InputStream    Reader
+		目的：OutputStream Writer
+		先根据需求明确要读，还是要写。
+
+	明确二：要操作的数据是字节还是文本呢？
+		源：
+			字节：InputStream
+			文本：Reader
+		目的：
+			字节：OutputStream
+			文本：Writer
+		已经明确到了具体的体系上。
+
+	明确三：明确数据所在的具体设备。
+		源设备：
+			硬盘：文件  File开头。
+			内存：数组，字符串。
+			键盘：System.in;
+			网络：Socket
+		目的设备：
+			硬盘：文件  File开头。
+			内存：数组，字符串。
+			屏幕：System.out
+			网络：Socket
+		完全可以明确具体要使用哪个流对象。
+
+	明确四：是否需要额外功能呢？
+		额外功能：
+			转换吗？转换流。InputStreamReader OutputStreamWriter
+			高效吗？缓冲区对象。BufferedXXX
+     InputStream
+       FileInputStream
+       BufferedInputStream
+ 
+	OuputStream 
+	   FileOutputStream
+	   BufferedOuputStream
+
+
+	Writer
+	  OutputStreamWriter
+	     FileWriter
+	      BufferedWriter
+
+	Reader
+	  InputStreamReader
+	     FileReader
+	 BufferedReader
+
+
+知识点总结
+	字节流
+	字节输入流 InputStream
+	FileInputStream 操作文件的字节输入流
+	BufferedInputStream高效的字节输入流
+	字节输出流 OutputStream
+	FileOutputStream 操作文件的字节输出流
+	BufferedOutputStream 高效的字节输出流
+	字符流
+	字符输入流 Reader
+	FileReader 操作文件的字符输入流
+	BufferedReader 高效的字符输入流
+	InputStreamReader 输入操作的转换流(把字节流封装成字符流)
+	字符输出流 Writer
+	FileWriter 操作文件的字符输出流
+	BufferedWriter 高效的字符输出流
+	OutputStreamWriter 输出操作的转换流(把字节流封装成字符流)
+
+	方法：
+	读数据方法：
+	read() 一次读一个字节或字符的方法
+	read(byte[]  char[]) 一次读一个数组数据的方法
+	readLine() 一次读一行字符串的方法(BufferedReader类特有方法)
+	readObject() 从流中读取对象(ObjectInputStream特有方法)
+	写数据方法：
+	write(int) 一次写一个字节或字符到文件中
+	write(byte[] char[]) 一次写一个数组数据到文件中
+	write(String) 一次写一个字符串内容到文件中
+	writeObject(Object ) 写对象到流中(ObjectOutputStream类特有方法)
+	newLine() 写一个换行符号(BufferedWriter类特有方法)
+
+	向文件中写入数据的过程
+1，创建输出流对象
+2，写数据到文件
+3，关闭输出流
+	从文件中读数据的过程
+1，	创建输入流对象
+2，	从文件中读数据
+3，	关闭输入流
+
+	文件复制的过程
+1，	创建输入流（数据源）
+2，	创建输出流（目的地）
+3，	从输入流中读数据
+4，	通过输出流，把数据写入目的地
+5，	关闭流
